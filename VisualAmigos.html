@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificación de la Suma de Divisores</title>
+</head>
+<body>
+    <h1>Verificación de la Suma de Divisores</h1>
+    <p>Ingrese dos números:</p>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <button onclick="verificarSumaDivisores()">Verificar</button>
+    <p id="resultado"></p>
+
+<script>
+ 
+    function sumaDivisores(num) {
+        let suma = 0;
+        for (let i = 1; i < num; i++) {
+            if (num % i === 0) {
+                suma += i;
+            }
+        }
+        return suma;
+    }
+
+    // Función para verificar si la suma de los divisores de dos números es igual al otro número
+    function verificarSumaDivisores() {
+        let num1 = parseInt(document.getElementById("num1").value);
+        let num2 = parseInt(document.getElementById("num2").value);
+
+        let sumaDivisoresNum1 = sumaDivisores(num1);
+        let sumaDivisoresNum2 = sumaDivisores(num2);
+
+        let resultado = document.getElementById("resultado");
+
+        if (sumaDivisoresNum1 === num2 && sumaDivisoresNum2 === num1) {
+            resultado.innerHTML = "La suma de los divisores de ambos números es igual al otro número.";
+        } else {
+            resultado.innerHTML = "La suma de los divisores de ambos números no es igual al otro número.";
+        }
+    }
+</script>
+</body>
+</html>
